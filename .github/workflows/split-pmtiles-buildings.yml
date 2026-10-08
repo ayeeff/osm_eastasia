@@ -45,7 +45,7 @@ jobs:
           sudo make install
           cd ..
           rm -rf tippecanoe
-          tile-join --version
+          tippecanoe -v
 
       - name: Configure AWS credentials for Cloudflare R2
         env:

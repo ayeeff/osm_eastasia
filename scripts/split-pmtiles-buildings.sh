@@ -36,8 +36,8 @@ echo "  Source PMTiles size: $((ORIGINAL_SIZE / 1024 / 1024)) MB"
 # 2. Run tile-join: split into no-buildings PMTiles and building tile folder
 echo "[2/4] Running tile-join to strip and isolate buildings..."
 mkdir -p "${WORKDIR}/bldg_tiles"
-tile-join -o "${WORKDIR}/${SLUG}-nobuildings.pmtiles" --exclude=buildings --exclude=building "${WORKDIR}/input.pmtiles" || true
-tile-join -e "${WORKDIR}/bldg_tiles" --include=buildings --include=building "${WORKDIR}/input.pmtiles" || true
+tile-join -o "${WORKDIR}/${SLUG}-nobuildings.pmtiles" --exclude-layer=buildings --exclude-layer=building "${WORKDIR}/input.pmtiles" || true
+tile-join -e "${WORKDIR}/bldg_tiles" --layer=buildings --layer=building "${WORKDIR}/input.pmtiles" || true
 
 # 3. Convert building tiles to buildings.bin + buildings.json
 echo "[3/4] Generating buildings.bin and buildings.json..."

@@ -10,9 +10,13 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { VectorTile } from '@mapbox/vector-tile';
-import { PbfReader } from 'pbf';
+import { createRequire } from 'node:module';
 import { decompressSync } from 'fflate';
+
+const require = createRequire(import.meta.url);
+const { VectorTile } = require('@mapbox/vector-tile');
+const PbfModule = require('pbf');
+const PbfReader = PbfModule.PbfReader || PbfModule.default || PbfModule;
 
 const argv = process.argv.slice(2);
 const flag = (n, d) => {

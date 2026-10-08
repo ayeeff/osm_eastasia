@@ -29,12 +29,16 @@ jobs:
 
       - name: Install Node dependencies
         run: |
-          npm install @mapbox/vector-tile pbf fflate
+          npm install
+
+      - name: Verify AWS CLI
+        run: |
+          aws --version
 
       - name: Install Tippecanoe (tile-join)
         run: |
           sudo apt-get update
-          sudo apt-get install -y git build-essential libsqlite3-dev zlib1g-dev pkg-config awscli
+          sudo apt-get install -y git build-essential libsqlite3-dev zlib1g-dev pkg-config
           git clone --depth 1 https://github.com/felt/tippecanoe.git
           cd tippecanoe
           make -j$(nproc)
